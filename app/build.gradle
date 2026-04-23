@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "33.0.0"
+    defaultConfig {
+        applicationId "img.enc"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "ʕ̯•͡˔•̯᷅ʔ"
+        // 只保留中文资源
+        resConfigs "zh"
+    }
+    signingConfigs {
+        releaseSigning {
+            storeFile file("test.keystore")
+            storePassword "testpass"
+            keyAlias "testkey"
+            keyPassword "testpass"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseSigning
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+}
+task cleanProject(type: Delete) {
+    delete rootProject.buildDir
+}
