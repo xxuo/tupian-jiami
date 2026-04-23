@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "33.0.0"    
+    defaultConfig {
+        applicationId "img.enc"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "ʕ̯•͡˔•̯᷅ʔ"
+        // 只保留中文资源
+        resConfigs "zh"        
+        // 只保留armeabi-v7a架构，减小APK体积
+        // ndk {
+        //     abiFilters "armeabi-v7a"
+        // }
+    }    
+    signingConfigs {
+        releaseSigning {
+            storeFile file("B:\\Android\\ʕ̯•͡˔•̯᷅ʔ.keystore")
+            storePassword "DIY@0.w"
+            keyAlias "ʕ̯•͡˔•̯᷅ʔ"
+            keyPassword "VIP@3.v"
+            v1SigningEnabled false
+            v2SigningEnabled true
+        }
+    }    
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseSigning
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+}
+task cleanProject(type: Delete) {
+    delete rootProject.buildDir
+}
