@@ -40,7 +40,7 @@
 
 | 加密前 | 加密后 |
 |--------|--------|
-| ![加密前](加密.png) | ![加密后](解密.png) |
+| ![加密前](https://github.com/xxuo/tupian-jiami/raw/main/加密.png) | ![加密后](https://github.com/xxuo/tupian-jiami/raw/main/解密.png) |
 
 ## 使用方法
 
